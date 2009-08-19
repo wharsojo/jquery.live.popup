@@ -1,0 +1,18 @@
+.pop-up, .pop-up-background  { position:fixed; display:none; }
+.pop-up                      { z-index:1002; top:50%; left:50%; opacity:.9; filter: alpha(opacity=90); background:#666; border:solid red; }
+.pop-up-background           { z-index:1001; top:0;   left:0;   opacity:.3; filter: alpha(opacity=30); background:#BBE;}    
+.pop-up.dialog               { border:none;}
+.pop-up-show, .pop-up-hide   { cursor: pointer;}
+  
+.pop-up-dialog .top-left,
+.pop-up-dialog .top-right,
+.pop-up-dialog .bottom-right,
+.pop-up-dialog .bottom-left  { width: 10px; height: 10px; padding: 0 }
+
+.pop-up-dialog .top-left     { background: url('images/tl.png'); }
+.pop-up-dialog .top-right    { background: url('images/tr.png'); }
+.pop-up-dialog .bottom-right { background: url('images/br.png'); }
+.pop-up-dialog .bottom-left  { background: url('images/bl.png'); }
+  
+.pop-up-dialog .top,	.pop-up-dialog .bottom { height: 10px; background-color: black; opacity: 0.6; filter: alpha(opacity=60); padding: 0 }
+.pop-up-dialog .left,	.pop-up-dialog .right  { width: 10px;  background-color: black; opacity: 0.6; filter: alpha(opacity=60); padding: 0 }
