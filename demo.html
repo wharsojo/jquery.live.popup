@@ -4,14 +4,25 @@
   <link href="jquery.live.popup.css" media="screen" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="jquery.live.popup.js"></script>
-</head>
+  <script>
+  $(function(){
+    $.livePopup.beforePopup.pop1 = function(){
+      var s = $.livePopup.state;   /* shortcut $.livePopup.state => s */
+      var r = s.click.attr('ref'); /* s.click: jQuery.element whose clicking popup */
+      var d = $.ajax({url: r,async: false}).responseText;
+      s.popup.append(d);           /* s.popup: jQuery.element target popup */ 
+    };
+    
+  })
+  </script>
+  </head>
 <body>
   
   <div id="pop1" class="pop-up" style="width:250px;height:150px;">
 		 <div class="pop-up-hide" style="float:right">[X]</div>
      DODOL...
   </div>
-	<div class="pop-up-show" pop="#pop1">Show Popup1</div>
+	<div class="pop-up-show" pop="#pop1" ref="gue.txt">Show Popup1</div>
   
   <div id="pop2" class="pop-up modal" style="width:350px;height:110px;">
 		 <div class="pop-up-hide" style="float:right">[X]</div>

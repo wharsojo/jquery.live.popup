@@ -16,6 +16,7 @@
   $.livePopup = {};
   $.livePopup.state = {};
   $.livePopup.state.click = null;
+  $.livePopup.state.popup = null;
   $.livePopup.beforePopup = {};
   
   timerResize = function(){
@@ -33,7 +34,8 @@
   
   jQuery.fn.popup= function(){
     var q=this.eq(0);
-    $.livePopup.beforePopup[this[0].id]();
+    var x=$.livePopup.beforePopup[this[0].id];
+    if(typeof x == 'function') x();
     q.css( {marginTop:  (- q.outerHeight()/2)+'px',
             marginLeft: (- q.outerWidth() /2)+'px'} ).show();
     if(q.hasClass('modal'))$('div.pop-up-background').show();
@@ -61,6 +63,7 @@
       var q = $(this);
       var p = q.attr('pop');
       $.livePopup.state.click = q;
+      $.livePopup.state.popup = $(p);
       $(p).popup();
     });
     
