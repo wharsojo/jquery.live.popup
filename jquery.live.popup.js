@@ -13,6 +13,10 @@
  * $Date: 2009-08-19 $
  */
  (function($){
+  $.livePopup = {};
+  $.livePopup.state = {};
+  $.livePopup.state.click = null;
+  $.livePopup.beforePopup = {};
   
   timerResize = function(){
     var b=$(window);
@@ -29,6 +33,7 @@
   
   jQuery.fn.popup= function(){
     var q=this.eq(0);
+    $.livePopup.beforePopup[this[0].id]();
     q.css( {marginTop:  (- q.outerHeight()/2)+'px',
             marginLeft: (- q.outerWidth() /2)+'px'} ).show();
     if(q.hasClass('modal'))$('div.pop-up-background').show();
@@ -53,7 +58,10 @@
     });
     
     $('.pop-up-show').live('click',function(e){
-      $($(this).attr('pop')).popup();
+      var q = $(this);
+      var p = q.attr('pop');
+      $.livePopup.state.click = q;
+      $(p).popup();
     });
     
     $('.pop-up-hide').live('click',function(e){
